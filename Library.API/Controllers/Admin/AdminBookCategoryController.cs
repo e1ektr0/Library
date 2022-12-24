@@ -1,4 +1,5 @@
-﻿using Library.Services;
+﻿using Library.API.Models;
+using Library.Services;
 using Library.Services.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,8 +8,8 @@ namespace Library.API.Controllers.Admin;
 
 [ApiController]
 [Route("book")]
-[Authorize(Roles = CustomRoles.Admin)]
-public class AdminBookCategoryController: ControllerBase
+[Authorize(AuthenticationSchemes = "Bearer", Roles = CustomRoles.Admin)]
+public class AdminBookCategoryController : ControllerBase
 {
     private readonly BookService _bookService;
 
@@ -17,17 +18,19 @@ public class AdminBookCategoryController: ControllerBase
         _bookService = bookService;
     }
 
-    [Route("{id}/category/{categoryId}")]
+    [Route("{bookId}/category/{categoryId}")]
     [HttpPost]
-    public async Task AddCategory(long id, long categoryId)
+    public async Task<Ok> AddCategory(long bookId, long categoryId)
     {
-        await _bookService.AddCategory(id, categoryId);
+        await _bookService.AddCategory(bookId, categoryId);
+        return new Ok();
     }
-    
+
     [HttpDelete]
-    [Route("{id}/category/{categoryId}")]
-    public async Task RemoveCategory(long id, long categoryId)
+    [Route("{bookId}/category/{categoryId}")]
+    public async Task<Ok> RemoveCategory(long bookId, long categoryId)
     {
-        await _bookService.RemoveCategory(id, categoryId);
+        await _bookService.RemoveCategory(bookId, categoryId);
+        return new Ok();
     }
 }

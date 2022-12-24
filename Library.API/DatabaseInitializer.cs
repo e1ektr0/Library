@@ -1,5 +1,6 @@
 using Library.Configs;
 using Library.Data;
+using Library.Data.Models;
 using Library.Services.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -36,10 +37,24 @@ public class DatabaseInitializer
 
 
         await Seed();
+        await _context.SaveChangesAsync();
     }
 
     private async Task Seed()
     {
         await _roleManager.CreateAsync(new IdentityRole<long>(CustomRoles.Admin));
+
+
+        if (_globalConfig.Test)
+        {
+            await _context.Categories.AddAsync(new Category
+            {
+                Name = "Test",
+                Description = "TestD"
+            });
+            
+        }
+        
+        
     }
 }

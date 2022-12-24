@@ -14,6 +14,8 @@
       &lt;TestId&gt;NUnit3x::FB7B6E8A-A3C4-48ED-9E2A-703E2F19753B::net6.0::Library.API.Test.AuthTest.LoginAdminTest&lt;/TestId&gt;&#xD;
       &lt;TestId&gt;NUnit3x::FB7B6E8A-A3C4-48ED-9E2A-703E2F19753B::net6.0::Library.API.Test.AdminBookTest.UpdateBook&lt;/TestId&gt;&#xD;
       &lt;TestId&gt;NUnit3x::FB7B6E8A-A3C4-48ED-9E2A-703E2F19753B::net6.0::Library.API.Test.AdminBookTest.DeleteBook&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::FB7B6E8A-A3C4-48ED-9E2A-703E2F19753B::net6.0::Library.API.Test.AdminBookCategoriesTest.AddCategory&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::FB7B6E8A-A3C4-48ED-9E2A-703E2F19753B::net6.0::Library.API.Test.AdminBookCategoriesTest.RemoveCategory&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
     &lt;And&gt;&#xD;
       &lt;TestAncestor&gt;&#xD;

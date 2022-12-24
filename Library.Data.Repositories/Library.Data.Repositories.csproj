@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Library.Data\Library.Data.csproj" />
+      <ProjectReference Include="..\Library.Exceptions\Library.Exceptions.csproj" />
     </ItemGroup>
 
 </Project>
