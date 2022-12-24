@@ -1,8 +1,8 @@
 ﻿using System.Net;
-using Library.API.Controllers.Admin.Models;
 using Library.Data.Models;
 using Library.Data.Repositories;
 using Library.Exceptions;
+using Library.Services.Models;
 using Mapster;
 
 namespace Library.Services;

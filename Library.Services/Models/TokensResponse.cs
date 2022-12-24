@@ -1,4 +1,4 @@
-namespace Library.Services;
+namespace Library.Services.Models;
 
 public class TokensResponse
 {

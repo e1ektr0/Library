@@ -1,4 +1,4 @@
-namespace Library.API.Controllers.Admin.Models;
+namespace Library.Services.Models;
 
 public class BookUpdateRequest
 {

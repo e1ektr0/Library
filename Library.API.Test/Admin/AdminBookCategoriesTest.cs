@@ -3,7 +3,7 @@ using Library.API.Models;
 using Microsoft.EntityFrameworkCore;
 using RAIT.Core;
 
-namespace Library.API.Test;
+namespace Library.API.Test.Admin;
 
 public class AdminBookCategoriesTest : AdminBookTest
 {

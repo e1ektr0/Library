@@ -1,10 +1,10 @@
 ﻿using Library.API.Controllers.Admin;
-using Library.API.Controllers.Admin.Models;
 using Library.API.Models;
+using Library.Services.Models;
 using Microsoft.EntityFrameworkCore;
 using RAIT.Core;
 
-namespace Library.API.Test;
+namespace Library.API.Test.Admin;
 
 public class AdminBookTest : AuthTest
 {
