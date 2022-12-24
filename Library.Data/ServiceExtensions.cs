@@ -25,7 +25,6 @@ public static class ServiceExtensions
         }, ServiceLifetime.Scoped, ServiceLifetime.Singleton);
 
         
-        collection.AddScoped<DatabaseInitializer>();
         return collection;
     }
 }

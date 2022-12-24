@@ -1,8 +1,6 @@
-﻿using System.Net;
-using Library.API.Controllers.Auth.Models;
-using Library.Data.Models;
-using Library.Exceptions;
-using Microsoft.AspNetCore.Identity;
+﻿using Library.API.Controllers.Auth.Models;
+using Library.Services;
+using Library.Services.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.API.Controllers.Auth;
@@ -11,23 +9,31 @@ namespace Library.API.Controllers.Auth;
 [Route("[controller]")]
 public class AuthController : ControllerBase
 {
-    private readonly UserManager<User> _userManager;
+    private readonly AuthService _authService;
 
-    public AuthController(UserManager<User> userManager)
+    public AuthController(AuthService authService)
     {
-        _userManager = userManager;
+        _authService = authService;
+    }
+    
+    [Route("signup")]
+    [HttpPost]
+    public async Task<TokensResponse> SignUp(SignUpRequest model)
+    {
+        return await _authService.SignUp(model.UserName, model.Password);
     }
 
     [HttpPost]
-    public async Task<SignUpRequestResult> SignUp(SignUpRequest model)
+    public async Task<LoginResponse> Login(LoginRequest model)
     {
-        var identityResult = await _userManager.CreateAsync(new User
-        {
-            UserName = model.UserName
-        }, model.Password);
-        if (!identityResult.Succeeded)
-            throw new PortalException(identityResult.Errors.First().Description, HttpStatusCode.Forbidden);
-        
-        return new SignUpRequestResult();
+        return await _authService.Login(model.UserName, model.Password);
+
+    }
+    
+    [Route("refresh/{token}")]
+    [HttpPost]
+    public async Task<TokensResponse> Refresh(string token)
+    {
+        return await _authService.RefreshToken(token);
     }
 }

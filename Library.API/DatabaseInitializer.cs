@@ -1,7 +1,8 @@
 using Library.Configs;
+using Library.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Library.Data;
+namespace Library.API;
 
 public class DatabaseInitializer
 {

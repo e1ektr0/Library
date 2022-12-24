@@ -21,6 +21,7 @@ public static class ServiceExtensions
             .AddAuthentication(config)
             .AddDb(config);
 
+        collection.AddScoped<DatabaseInitializer>();
         collection.AddControllers();
         collection.AddEndpointsApiExplorer();
         collection.AddSwaggerGen();

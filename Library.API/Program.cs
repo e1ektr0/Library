@@ -1,5 +1,4 @@
 ﻿using Library.API;
-using Library.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services
