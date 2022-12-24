@@ -23,4 +23,15 @@ public class BookRepository : BaseRepository
     {
         Context.Books.Remove(book);
     }
+
+    public async Task<List<Book>> Search(string? search, List<long>? categories)
+    {
+        var query = Context.Books.AsQueryable();
+        if (search != null)
+            query = query.Where(n => n.EngSearchVector.Matches(search));
+        if(categories!=null)
+            query = query.Where(n =>n.Categories!.Any(u=>categories.Contains(u.CategoryId )) );
+
+        return await query.ToListAsync();
+    }
 }

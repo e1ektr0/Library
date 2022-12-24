@@ -11,11 +11,14 @@ public class BookService
 {
     private readonly BookRepository _bookRepository;
     private readonly BookCategoryRepository _bookCategoryRepository;
+    private readonly BookFavoriteRepository _bookFavoriteRepository;
 
-    public BookService(BookRepository bookRepository, BookCategoryRepository bookCategoryRepository)
+    public BookService(BookRepository bookRepository, BookCategoryRepository bookCategoryRepository,
+        BookFavoriteRepository bookFavoriteRepository)
     {
         _bookRepository = bookRepository;
         _bookCategoryRepository = bookCategoryRepository;
+        _bookFavoriteRepository = bookFavoriteRepository;
     }
 
     public async Task Create(BookCreateRequest book)
@@ -36,7 +39,7 @@ public class BookService
 
     public async Task AddCategory(long bookId, long categoryId)
     {
-        await _bookCategoryRepository.Add(new BookCategories
+        await _bookCategoryRepository.Add(new BookCategory
         {
             BookId = bookId,
             CategoryId = categoryId
@@ -62,5 +65,15 @@ public class BookService
             throw new PortalException("Book not found", HttpStatusCode.NotFound);
         _bookRepository.Delete(book);
         await _bookRepository.SaveAsync();
+    }
+
+    public async Task AddToFavorites(long userId, long bookId)
+    {
+        await _bookFavoriteRepository.Add(new BookUserFavorite
+        {
+            BookId = bookId,
+            UserId = userId
+        });
+        await _bookFavoriteRepository.SaveAsync();
     }
 }

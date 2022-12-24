@@ -16,6 +16,7 @@
       &lt;TestId&gt;NUnit3x::FB7B6E8A-A3C4-48ED-9E2A-703E2F19753B::net6.0::Library.API.Test.AdminBookTest.DeleteBook&lt;/TestId&gt;&#xD;
       &lt;TestId&gt;NUnit3x::FB7B6E8A-A3C4-48ED-9E2A-703E2F19753B::net6.0::Library.API.Test.AdminBookCategoriesTest.AddCategory&lt;/TestId&gt;&#xD;
       &lt;TestId&gt;NUnit3x::FB7B6E8A-A3C4-48ED-9E2A-703E2F19753B::net6.0::Library.API.Test.AdminBookCategoriesTest.RemoveCategory&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::FB7B6E8A-A3C4-48ED-9E2A-703E2F19753B::net6.0::Library.API.Test.UserTests.UserSearchTest.AddToFavorites&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
     &lt;And&gt;&#xD;
       &lt;TestAncestor&gt;&#xD;
@@ -23,6 +24,13 @@
       &lt;/TestAncestor&gt;&#xD;
       &lt;Project Location="C:\Users\E1ektr0\RiderProjects\Library\Library.API.Test" Presentation="&amp;lt;Library.API.Test&amp;gt;" /&gt;&#xD;
       &lt;Namespace&gt;Library.API.Test&lt;/Namespace&gt;&#xD;
+    &lt;/And&gt;&#xD;
+    &lt;And&gt;&#xD;
+      &lt;TestAncestor&gt;&#xD;
+        &lt;TestId&gt;NUnit3x::FB7B6E8A-A3C4-48ED-9E2A-703E2F19753B::net6.0::Library.API.Test.UserTests.UserSearchTest.Search&lt;/TestId&gt;&#xD;
+      &lt;/TestAncestor&gt;&#xD;
+      &lt;Project Location="C:\Users\E1ektr0\RiderProjects\Library\Library.API.Test" Presentation="&amp;lt;Library.API.Test&amp;gt;" /&gt;&#xD;
+      &lt;Namespace&gt;Library.API.Test.UserTests&lt;/Namespace&gt;&#xD;
     &lt;/And&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

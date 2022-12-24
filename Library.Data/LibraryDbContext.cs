@@ -20,16 +20,27 @@ public class LibraryDbContext : IdentityDbContext<User, IdentityRole<long>, long
 
     public DbSet<Book> Books { get; set; } = null!;
     public DbSet<Category> Categories { get; set; } = null!;
-    public DbSet<BookCategories> BookCategories { get; set; } = null!;
-    
+    public DbSet<BookCategory> BookCategories { get; set; } = null!;
+    public DbSet<BookUserFavorite> BookUserFavorites { get; set; } = null!;
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        
-        modelBuilder.Entity<BookCategories>()
+
+        modelBuilder.Entity<BookCategory>()
             .HasKey(c => new { c.BookId, c.CategoryId });
+        modelBuilder.Entity<BookUserFavorite>()
+            .HasKey(c => new { c.BookId, c.UserId });
+
+        modelBuilder.Entity<Book>()
+            .HasGeneratedTsVectorColumn(
+                p => p.EngSearchVector,
+                "english", // Text search config
+                p => new { p.Name, p.Author }) // Included properties
+            .HasIndex(p => p.EngSearchVector)
+            .HasMethod("GIN");
     }
-    
+
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
     {
         var now = DateTime.UtcNow;

@@ -18,7 +18,8 @@ public class AdminBookTest : AuthTest
             Author = "Test",
             ImageUrl = "https://google.com",
             PagesCount = 100,
-            PublishedDate = DateTime.UtcNow.AddDays(-1000)
+            PublishedDate = DateTime.UtcNow.AddDays(-1000),
+            Name = "Name"
         };
 
         await Client.Call<AdminBookController, Ok>(n => n.Create(model));

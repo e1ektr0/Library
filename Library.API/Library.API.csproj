@@ -26,9 +26,4 @@
       <ProjectReference Include="..\Library.Exceptions\Library.Exceptions.csproj" />
       <ProjectReference Include="..\Library.Services\Library.Services.csproj" />
     </ItemGroup>
-
-
-    <ItemGroup>
-      <Folder Include="Controllers\User" />
-    </ItemGroup>
 </Project>
