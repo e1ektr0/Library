@@ -22,21 +22,22 @@ public class AdminBookController : ControllerBase
     [HttpPost]
     public async Task<Ok> Create([FromBody]BookCreateRequest model)
     {
-        await _bookService.Create(model.ToDb());
+        await _bookService.Create(model);
         return new Ok();
     }
     
     [HttpPut]
-    public async Task Update()
+    public async Task<Ok> Update(BookUpdateRequest bookUpdateRequest)
     {
-        
+        await _bookService.Update(bookUpdateRequest);
+        return new Ok();
     }
     
+    [Route("{id}")]
     [HttpDelete]
-    public async Task Delete()
+    public async Task<Ok> Delete(long id)
     {
-        
+        await _bookService.Delete(id);
+        return new Ok();
     }
-    
-    
 }
