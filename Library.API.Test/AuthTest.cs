@@ -1,3 +1,5 @@
+using Library.API.Controllers.Auth;
+using Library.API.Controllers.Auth.Models;
 using RAIT.Core;
 
 namespace Library.API.Test;
@@ -6,8 +8,13 @@ public class AuthTest : SetupApiTest
 {
     
     [Test]
-    public async Task GetCall()
+    public async Task SignUpTest()
     {
-       // await Сlient.Call<AuthController, Ok>(n => n.GetWithId(10));
+        var model = new SignUpRequest
+        {
+            UserName = "maximfeofilov@gmail.com",
+            Password = "BlaBlaBla"
+        };
+        var signUpRequestResult = await Сlient.Call<AuthController, SignUpRequestResult>(n => n.SignUp(model));
     }
 }

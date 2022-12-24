@@ -1,6 +1,6 @@
-namespace Library.Data.Models;
+﻿namespace Library.Data.Models;
 
-public abstract class DateTimeEntity : IDateTimeEntity
+public interface IDateTimeEntity
 {
     public DateTime CreatedDate { get; set; }
     public DateTime UpdatedDate { get; set; }

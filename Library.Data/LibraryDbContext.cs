@@ -1,9 +1,11 @@
 ﻿using Library.Data.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library.Data;
 
-public class LibraryDbContext : DbContext
+public class LibraryDbContext : IdentityDbContext<User, IdentityRole<long>, long>
 {
     private readonly bool _initialized;
 
@@ -16,13 +18,14 @@ public class LibraryDbContext : DbContext
         _initialized = true;
     }
 
+
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
     {
         var now = DateTime.UtcNow;
 
         foreach (var changedEntity in ChangeTracker.Entries())
         {
-            if (changedEntity.Entity is DateTimeEntity entity)
+            if (changedEntity.Entity is IDateTimeEntity entity)
             {
                 switch (changedEntity.State)
                 {
