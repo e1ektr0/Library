@@ -1,6 +1,6 @@
-﻿using System.Reflection;
-using Library.API.Controllers.Admin.Models;
+﻿using Library.API.Controllers.Admin.Models;
 using Library.Data.Models;
+using Library.Services.Image;
 using Mapster;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,6 +16,7 @@ public static class ServiceExtensions
         foreach (var type in services)
             collection.AddScoped(type);
         MappingConfigs();
+        collection.AddScoped<IImageStorage, FileImageStorage>();
         return collection;
     }
 

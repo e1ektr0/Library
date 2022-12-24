@@ -25,5 +25,6 @@
       <ProjectReference Include="..\Library.Data\Library.Data.csproj" />
       <ProjectReference Include="..\Library.Exceptions\Library.Exceptions.csproj" />
       <ProjectReference Include="..\Library.Services\Library.Services.csproj" />
+      <ProjectReference Include="..\Library.Utils\Library.Utils.csproj" />
     </ItemGroup>
 </Project>

@@ -20,6 +20,7 @@
       <ProjectReference Include="..\Library.Data.Repositories\Library.Data.Repositories.csproj" />
       <ProjectReference Include="..\Library.Data\Library.Data.csproj" />
       <ProjectReference Include="..\Library.Exceptions\Library.Exceptions.csproj" />
+      <ProjectReference Include="..\Library.Services.Image\Library.Services.Image.csproj" />
     </ItemGroup>
 
 
