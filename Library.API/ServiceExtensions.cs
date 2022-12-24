@@ -7,6 +7,7 @@ using Library.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 namespace Library.API;
 
@@ -24,7 +25,7 @@ public static class ServiceExtensions
         collection.AddScoped<DatabaseInitializer>();
         collection.AddControllers();
         collection.AddEndpointsApiExplorer();
-        collection.AddSwaggerGen();
+        AddSwagger(collection);
 
         collection.AddIdentity<User, IdentityRole<long>>().AddEntityFrameworkStores<LibraryDbContext>();
         collection.Configure<IdentityOptions>(options =>
@@ -35,16 +36,36 @@ public static class ServiceExtensions
         });
     }
 
+    private static void AddSwagger(IServiceCollection services)
+    {
+        services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ego.Api", Version = "v1" });
+            var securitySchema = new OpenApiSecurityScheme
+            {
+                Description =
+                    "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                Name = "Authorization",
+                In = ParameterLocation.Header,
+                Type = SecuritySchemeType.Http,
+                Scheme = "bearer",
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            };
+            c.AddSecurityDefinition("Bearer", securitySchema);
+
+            var securityRequirement = new OpenApiSecurityRequirement { { securitySchema, new[] { "Bearer" } } };
+            c.AddSecurityRequirement(securityRequirement);
+        });
+    }
+
     private static IServiceCollection AddAuthentication(this IServiceCollection collection, IConfiguration config)
     {
-        collection.AddAuthorization();
         collection
-            .AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
+            .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
                 var jwtOptions = config.GetSection(JwtConfig.OptionsSection).Get<JwtConfig>()!;
@@ -61,6 +82,7 @@ public static class ServiceExtensions
                     ClockSkew = TimeSpan.Zero
                 };
             });
+        collection.AddAuthorization();
         return collection;
     }
 }

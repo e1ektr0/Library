@@ -18,7 +18,18 @@ public class LibraryDbContext : IdentityDbContext<User, IdentityRole<long>, long
         _initialized = true;
     }
 
-
+    public DbSet<Book> Books { get; set; } = null!;
+    public DbSet<Category> Categories { get; set; } = null!;
+    public DbSet<BookCategories> BookCategories { get; set; } = null!;
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        
+        modelBuilder.Entity<BookCategories>()
+            .HasKey(c => new { c.BookId, c.CategoryId });
+    }
+    
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
     {
         var now = DateTime.UtcNow;

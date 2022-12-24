@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Configs", "Library.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Exceptions", "Library.Exceptions\Library.Exceptions.csproj", "{41B0F267-BA2B-4055-A38B-C484BD3CBFAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RAIT.Core", "..\RAIT\RAIT.Core\RAIT.Core.csproj", "{0D94E766-EDB0-46B3-A9DB-8D3C4535CFB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{41B0F267-BA2B-4055-A38B-C484BD3CBFAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41B0F267-BA2B-4055-A38B-C484BD3CBFAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41B0F267-BA2B-4055-A38B-C484BD3CBFAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D94E766-EDB0-46B3-A9DB-8D3C4535CFB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D94E766-EDB0-46B3-A9DB-8D3C4535CFB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D94E766-EDB0-46B3-A9DB-8D3C4535CFB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D94E766-EDB0-46B3-A9DB-8D3C4535CFB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{31AE364C-FC34-491F-BEC1-1A428BBAC4BE} = {BEEAA8E9-F035-424D-8013-01014B618083}

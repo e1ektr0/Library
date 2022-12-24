@@ -8,9 +8,10 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();
+app.MapControllers();
+
 app.UseAuthentication();
 app.UseAuthorization();
-app.MapControllers();
 
 await using var scope = app.Services.CreateAsyncScope();
 var dbInitializer = scope.ServiceProvider.GetService<DatabaseInitializer>()!;

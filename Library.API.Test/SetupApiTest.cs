@@ -1,24 +1,27 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Library.Data;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Library.API.Test;
 
 public abstract class SetupApiTest
 {
-    private WebApplicationFactory<Program> _application;
     protected IServiceProvider Services { get; set; } = null!;
-    protected HttpClient Сlient { get; set; } = null!;
+    protected HttpClient Client { get; set; } = null!;
+    protected LibraryDbContext Context { get; set; } = null!;
 
     [SetUp]
     public void Setup()
     {
-        _application = new WebApplicationFactory<Program>()
+        var app = new WebApplicationFactory<Program>()
             .WithWebHostBuilder(PrepareEnv);
 
-        Сlient = _application.CreateDefaultClient();
-        Services = _application.Services;
+        Client = app.CreateDefaultClient();
+        Services = app.Services;
+        Context = Services.GetService<LibraryDbContext>()!;
     }
+
 
     private void PrepareEnv(IWebHostBuilder _)
     {

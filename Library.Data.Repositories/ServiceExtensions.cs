@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Library.Data.Repositories;
 
@@ -9,7 +8,7 @@ public static class ServiceExtensions
     {
         var repositories = typeof(ServiceExtensions).Assembly
             .GetTypes()
-            .Where(n => n.Name.EndsWith("Repository"));
+            .Where(n => n.Name.EndsWith("Repository") && !n.Name.StartsWith("Base"));
         foreach (var type in repositories)
             collection.AddScoped(type);
 

@@ -7,18 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Mapster" Version="7.3.0" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.12" />
+        <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="2.2.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
 
     <ItemGroup>
         <InternalsVisibleTo Include="Library.API.Test" />
-    </ItemGroup>
-
-
-    <ItemGroup>
-      <Folder Include="Controllers\Admin" />
     </ItemGroup>
 
 

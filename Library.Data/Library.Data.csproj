@@ -24,4 +24,10 @@
       <ProjectReference Include="..\Library.Configs\Library.Configs.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="Library.Data">
+        <HintPath>..\Library.API.Test\bin\Debug\net6.0\Library.Data.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>
