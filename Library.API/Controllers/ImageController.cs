@@ -1,4 +1,5 @@
-﻿using Library.Services;
+﻿using Library.API.Models;
+using Library.Services;
 using Library.Services.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -28,8 +29,11 @@ public class ImageController : ControllerBase
 
     [HttpPost]
     [Authorize(AuthenticationSchemes = "Bearer", Roles = CustomRoles.Admin)]
-    public async Task<string> UploadImage(IFormFile image)
+    public async Task<FileUploadResult> UploadImage(IFormFile image)
     {
-        return await _imageService.Store(image.OpenReadStream(), image.FileName, image.ContentType);
+        return new FileUploadResult
+        {
+            Url = await _imageService.Store(image.OpenReadStream(), image.FileName, image.ContentType)
+        };
     }
 }

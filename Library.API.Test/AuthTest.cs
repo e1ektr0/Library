@@ -16,7 +16,7 @@ public class AuthTest : SetupApiTest
     private TokensResponse? _tokenResponse;
 
     [Test]
-    public async Task SignUpTest()
+    public async Task SignUp()
     {
         var model = new SignUpRequest
         {
@@ -33,7 +33,7 @@ public class AuthTest : SetupApiTest
     [Test]
     public async Task LoginTest()
     {
-        await SignUpTest();
+        await SignUp();
         var model = new LoginRequest
         {
             UserName = "maximfeofilov@gmail.com",
@@ -47,9 +47,9 @@ public class AuthTest : SetupApiTest
 
 
     [Test]
-    public async Task LoginAdminTest()
+    public async Task LoginAdmin()
     {
-        await SignUpTest();
+        await SignUp();
         var userManager = Services.GetService<UserManager<User>>();
         var user = await Context.Users.FirstAsync();
         await userManager!.AddToRolesAsync(user, new[] { CustomRoles.Admin });
@@ -68,9 +68,9 @@ public class AuthTest : SetupApiTest
     }
 
     [Test]
-    public async Task RefreshTokenTest()
+    public async Task RefreshToken()
     {
-        await SignUpTest();
+        await SignUp();
 
         var response = await Client.Call<AuthController, TokensResponse>
             (n => n.Refresh(_tokenResponse!.RefreshToken));

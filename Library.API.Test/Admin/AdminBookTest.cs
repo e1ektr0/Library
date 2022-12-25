@@ -11,7 +11,7 @@ public class AdminBookTest : AuthTest
     [Test]
     public async Task CreateBook()
     {
-        await LoginAdminTest();
+        await LoginAdmin();
 
         var model = new BookCreateRequest
         {

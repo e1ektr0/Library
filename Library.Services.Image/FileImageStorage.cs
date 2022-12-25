@@ -2,10 +2,6 @@
 
 public class FileImageStorage : IImageStorage
 {
-    public FileImageStorage()
-    {
-    }
-
     public FileStream Get(string image)
     {
         return File.Open(image, FileMode.Open);
