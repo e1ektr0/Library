@@ -1,8 +1,6 @@
 ﻿using Library.API.Controllers.Admin;
-using Library.API.Models;
 using Library.Services.Models;
 using Microsoft.EntityFrameworkCore;
-using RAIT.Core;
 
 namespace Library.API.Test.Admin;
 
@@ -22,7 +20,7 @@ public class AdminBookTest : AuthTest
             Name = "Name"
         };
 
-        await Client.Call<AdminBookController, Ok>(n => n.Create(model));
+        await Rait<AdminBookController>().Call(n => n.Create(model));
 
 
         var dbBook = await Context.Books.FirstAsync();
@@ -40,7 +38,7 @@ public class AdminBookTest : AuthTest
             Author = "Test2"
         };
 
-        await Client.Call<AdminBookController, Ok>(n => n.Update(model));
+        await Rait<AdminBookController>().Call(n => n.Update(model));
 
         await Context.Entry(dbBook).ReloadAsync();
         dbBook = await Context.Books.FirstAsync();
@@ -55,7 +53,7 @@ public class AdminBookTest : AuthTest
         await CreateBook();
         var dbBook = await Context.Books.FirstAsync();
       
-        await Client.Call<AdminBookController, Ok>(n => n.Delete(dbBook.Id));
+        await Rait<AdminBookController>().Call(n => n.Delete(dbBook.Id));
       
         dbBook = await Context.Books.FirstOrDefaultAsync();
 

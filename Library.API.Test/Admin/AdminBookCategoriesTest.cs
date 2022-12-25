@@ -1,7 +1,5 @@
 ﻿using Library.API.Controllers.Admin;
-using Library.API.Models;
 using Microsoft.EntityFrameworkCore;
-using RAIT.Core;
 
 namespace Library.API.Test.Admin;
 
@@ -15,7 +13,7 @@ public class AdminBookCategoriesTest : AdminBookTest
         var book = await Context.Books.FirstAsync();
         var category = await Context.Categories.FirstAsync();
 
-        await Client.Call<AdminBookCategoryController, Ok>(n => n.AddCategory(book.Id, category.Id));
+        await Rait<AdminBookCategoryController>().Call(n => n.AddCategory(book.Id, category.Id));
 
         Assert.That(await Context.BookCategories.AnyAsync(), Is.True);
     }
@@ -28,10 +26,8 @@ public class AdminBookCategoriesTest : AdminBookTest
         var book = await Context.Books.FirstAsync();
         var category = await Context.Categories.FirstAsync();
 
-        await Client.Call<AdminBookCategoryController, Ok>(n => n.RemoveCategory(book.Id, category.Id));
+        await Rait<AdminBookCategoryController>().Call(n => n.RemoveCategory(book.Id, category.Id));
 
         Assert.That(await Context.BookCategories.AnyAsync(), Is.False);
     }
-
-   
 }

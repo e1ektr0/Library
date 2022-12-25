@@ -19,7 +19,7 @@
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.12" />
         <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="6.0.12" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.12" />
-        <PackageReference Include="RAIT" Version="1.0.8" />
+        <PackageReference Include="RAIT" Version="1.0.9" />
     </ItemGroup>
 
     <ItemGroup>

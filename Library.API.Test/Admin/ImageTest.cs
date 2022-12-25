@@ -14,10 +14,10 @@ public class ImageTest : AuthTest
         var fileName = "ImageExample.png";
         using (var file = new RaitFormFile(fileName, "image/png"))
         {
-           fileUploadResult = await Client.Call<ImageController, FileUploadResult>(n => n.UploadImage(file));
+           fileUploadResult = await Rait<ImageController>().Call(n => n.UploadImage(file));
         }
       
-        var serverFileBytes = await Client.GetByteArrayAsync(fileUploadResult!.Url);
+        var serverFileBytes = await WebClient.GetByteArrayAsync(fileUploadResult!.Url);
         var originalFileBytes = await File.ReadAllBytesAsync(fileName);
         Assert.That(serverFileBytes.Length, Is.EqualTo(originalFileBytes.Length));
     }
