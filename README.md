@@ -11,3 +11,6 @@
 2. book essence: cover, author, year, title, description, number of pages, dynamic categories
 3. simple role-playing system: admin and user. Admin can create, modify, delete books (CRUD) Users can search by string and categories and add books to their bookshelf (favorites)
 4. use a local server as a server for storing images
+
+![Tests](https://cdn.discordapp.com/attachments/449268423638122498/1056249736543350847/image.png)
+![DB schema](https://cdn.discordapp.com/attachments/449268423638122498/1056249779723702322/Library_-_public.png)
