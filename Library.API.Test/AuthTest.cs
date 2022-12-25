@@ -6,7 +6,6 @@ using Library.Services.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using RAIT.Core;
 
 namespace Library.API.Test;
 
