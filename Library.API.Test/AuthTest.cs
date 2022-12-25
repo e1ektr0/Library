@@ -58,7 +58,7 @@ public class AuthTest : SetupApiTest
             UserName = "maximfeofilov@gmail.com",
             Password = "BlaBlaBla"
         };
-        var response = await WebClient.Call<AuthController, LoginResponse>(n => n.Login(model));
+        var response = await Rait<AuthController>().Call(n => n.Login(model));
 
         WebClient.DefaultRequestHeaders.Authorization =
             new AuthenticationHeaderValue("Bearer", response!.AccessToken);
@@ -71,8 +71,7 @@ public class AuthTest : SetupApiTest
     {
         await SignUp();
 
-        var response = await WebClient.Call<AuthController, TokensResponse>
-            (n => n.Refresh(_tokenResponse!.RefreshToken));
+        var response = await Rait<AuthController>().Call(n => n.Refresh(_tokenResponse!.RefreshToken));
 
         Assert.That(response!.AccessToken, Is.Not.Empty);
         Assert.That(response.RefreshToken, Is.Not.Empty);
