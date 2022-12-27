@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Library.API.Test.UserTests;
 
-public class UserSearchTest : AdminBookCategoriesTest
+public sealed class UserSearchTest : BaseApiTest
 {
     [Test]
     public async Task Search()
     {
-        await AddCategory();
+        await Base<AdminBookCategoriesTest>().AddCategory();
         var book = await Context.Books.FirstAsync();
         var category = await Context.Categories.FirstAsync();
 
@@ -32,7 +32,7 @@ public class UserSearchTest : AdminBookCategoriesTest
     [Test]
     public async Task AddToFavorites()
     {
-        await AddCategory();
+        await  Base<AdminBookCategoriesTest>().AddCategory();
         var book = await Context.Books.FirstAsync();
 
         await Rait<BookController>().Call(n => n.AddToFavorites(book.Id));

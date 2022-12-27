@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Library.API.Test;
 
-public class AuthTest : SetupApiTest
+public sealed class AuthTest : BaseApiTest
 {
     private TokensResponse? _tokenResponse;
 

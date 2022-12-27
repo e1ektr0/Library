@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Library.API.Test.Admin;
 
-public class AdminBookCategoriesTest : AdminBookTest
+public sealed class AdminBookCategoriesTest : BaseApiTest
 {
     [Test]
     public async Task AddCategory()
     {
-        await CreateBook();
+        await Base<AdminBookTest>().CreateBook();
 
         var book = await Context.Books.FirstAsync();
         var category = await Context.Categories.FirstAsync();

@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Library.API.Test.Admin;
 
-public class AdminBookTest : AuthTest
+public sealed class AdminBookTest : BaseApiTest
 {
     [Test]
     public async Task CreateBook()
     {
-        await LoginAdmin();
+        await Base<AuthTest>().LoginAdmin();
 
         var model = new BookCreateRequest
         {

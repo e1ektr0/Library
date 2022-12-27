@@ -4,12 +4,12 @@ using RAIT.Core;
 
 namespace Library.API.Test.Admin;
 
-public class ImageTest : AuthTest
+public sealed  class ImageTest : BaseApiTest
 {
     [Test]
     public async Task UploadImage()
     {
-        await LoginAdmin();
+        await Base<AuthTest>().LoginAdmin();
         FileUploadResult? fileUploadResult;
         var fileName = "ImageExample.png";
         using (var file = new RaitFormFile(fileName, "image/png"))
